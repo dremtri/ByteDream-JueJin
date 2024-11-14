@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/image-edge',
     'nuxt-umami',
-    'nuxt-meilisearch',
+    // 'nuxt-meilisearch',
     '@nuxt/devtools',
   ],
   experimental: {
@@ -84,13 +84,13 @@ export default defineNuxtConfig({
     websiteId: '6d45d6e7-70ee-4c39-a871-79a1be476d92',
     scriptUrl: 'https://umami.marlene.top/umami.js',
   },
-  meilisearch: {
-    hostUrl: process.env.MEILISEARCH_HOST,
-    searchApiKey: process.env.SEARCH_API_KEY,
-    adminApiKey: process.env.SEARCH_ADMIN_API_KEY,
-    serverSideUsage: true,
-    instantSearch: {
-      theme: 'algolia',
-    },
-  },
+  // meilisearch: {
+  //   hostUrl: process.env.MEILISEARCH_HOST,
+  //   searchApiKey: process.env.SEARCH_API_KEY,
+  //   adminApiKey: process.env.SEARCH_ADMIN_API_KEY,
+  //   serverSideUsage: true,
+  //   instantSearch: {
+  //     theme: 'algolia',
+  //   },
+  // },
 })
