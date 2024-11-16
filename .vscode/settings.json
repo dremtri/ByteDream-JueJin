@@ -1,7 +1,7 @@
 {
   // "prettier.enable": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
   "files.associations": {
     "*.css": "postcss"

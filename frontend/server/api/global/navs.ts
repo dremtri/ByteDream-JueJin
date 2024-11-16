@@ -3,14 +3,10 @@ import type { INavItem } from '~~/types/INav'
 export default defineEventHandler(async (): Promise<INavItem[]> => {
   const reqQuery = `query{
     global{
-      data{
-        attributes{
-          navs{
-            nav
-            url
-            badge
-          }
-        }
+      navs{
+        nav
+        url
+        badge
       }
     }
   }`

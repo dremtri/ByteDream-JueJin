@@ -3,14 +3,10 @@ import type { IAdsItem } from '~~/types/IGlobal'
 export default defineEventHandler(async (): Promise<IAdsItem> => {
   const reqQuery = `query{
     global{
-      data{
-        attributes{
-          contentAds{
-            ad
-            img
-            url
-          }
-        }
+      contentAds{
+        ad
+        img
+        url
       }
     }
   }`
