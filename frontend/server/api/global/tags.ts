@@ -11,13 +11,9 @@ export default defineEventHandler(async (event): Promise<ITagItem[]> => {
           }
           pagination: { pageSize: 999 }
         ) {
-      data {
-        id
-        attributes {
-          tag
-          alias
-        }
-      }
+      documentId
+      tag
+      alias
     }
   }
   `

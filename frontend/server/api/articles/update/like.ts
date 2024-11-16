@@ -11,20 +11,12 @@ export default defineEventHandler(async (event): Promise<liked> => {
     }
   }
   const reqQuery = `query{
-    article(id : ${id}){
-      data{
-        id
-        attributes{
-          liked
-          authorId{
-            data{
-              id
-              attributes{
-                liked
-              }
-            }
-          }
-        }
+    article(documentId : ${id}){
+      documentId
+      liked
+      authorId{
+        documentId
+        liked
       }
     }
   }`

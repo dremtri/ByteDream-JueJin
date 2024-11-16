@@ -8,12 +8,8 @@ export default defineEventHandler(async (event): Promise<IArticleItem[]> => {
   const id = decodeURIComponent(event.context.params.id)
   const reqQuery = `query {
     articles(filters:{columId:{column:{eq:"${id}"}}}){
-      data{
-        id
-        attributes{
-          title
-        }
-      }
+      documentId
+      title
     }
   }`
   return (await useGraphql(reqQuery)).articles.data

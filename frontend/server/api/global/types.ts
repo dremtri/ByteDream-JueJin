@@ -6,28 +6,23 @@ export default defineEventHandler(async (event): Promise<IType> => {
   const page = query?.page || 1
   const reqQuery = `query{
     types(pagination: { page:${page},pageSize: 9 }){
-      data{
-        attributes{
-          type
-          alias
-          tags{
-            data{
-              id
-              attributes{
-                tag
-                alias
-              }
-            }
-          }
-        }
+      type
+      alias
+      tags{
+        documentId
+        tag
+        alias
       }
-    meta{
-      pagination {
-        pageCount
-        total
-      }
-    }
     }
   }`
-  return (await useGraphql(reqQuery)).types
+  const types = (await useGraphql(reqQuery)).types
+  return {
+    data: types.data,
+    meta: {
+      pagination: {
+        pageCount: 5,
+        total: 8,
+      },
+    },
+  }
 })

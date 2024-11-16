@@ -13,14 +13,10 @@ export default defineEventHandler(async (event): Promise<IAuthorListItem[]> => {
           pagination: { page: ${page}, pageSize: 4 }
           sort: "rank:desc"
           ){
-          data{
-            attributes{
-              name
-              motto
-              avatar
-              rank
-            }
-          }
+          name
+          motto
+          avatar
+          rank
         }
       }`
   return (await useGraphql(reqQuery)).authors.data

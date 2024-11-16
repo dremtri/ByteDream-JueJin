@@ -13,12 +13,8 @@ export default defineEventHandler(async (event): Promise<ITagItem[] | IArticleIt
   const query = getQuery(event)
   let reqQuery = `query{
     tags{
-      data{
-        attributes{
-          tag
-          alias
-        }
-      }
+      tag
+      alias
     }
   }`
   if (JSON.stringify(query) !== '{}' && !!query.tags && !!query.authorId) {
@@ -31,19 +27,15 @@ export default defineEventHandler(async (event): Promise<ITagItem[] | IArticleIt
       articles(
         filters:{
           or: [${tagQuery}]
-          authorId: {id:{eq:"${authorId}"}}
+          authorId: {documentId:{eq:"${authorId}"}}
         }
         pagination: { pageSize: 10 }
         sort: "liked:desc"
       ){
-        data{
-          id
-          attributes{
-            title
-            liked
-            commented
-          }
-        }
+        title
+        liked
+        commented
+        documentId
       }
     }`
     return (await useGraphql(reqQuery)).articles.data

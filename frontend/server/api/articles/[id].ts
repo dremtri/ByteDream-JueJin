@@ -15,66 +15,42 @@ const updateViewed = async (type: string, id: string, viewedNum: number) => {
 export default defineEventHandler(async (event): Promise<IArticle> => {
   const id = event?.context?.params?.id || '1'
   const reqQuery = `query{
-    article(id : ${id}){
-      data{
-        id
-        attributes{
+    article(documentId : ${id}){
+      documentId
+      title
+      viewed
+      liked
+      shared
+      commented
+      content
+      cover
+      createdAt
+      updatedAt
+      summary
+      authorId{
+        documentId
+        name
+        motto
+        avatar
+        rank
+        liked
+        viewed
+      }
+      tagIds{
+        tag
+        alias
+      }
+      typeId{
+        type
+        alias
+      }
+      columId{
+        column
+        cover
+        describe
+        articles{
+          documentId
           title
-          viewed
-          liked
-          shared
-          commented
-          content
-          cover
-          createdAt
-          updatedAt
-          summary
-          authorId{
-            data{
-              id
-              attributes{
-                name
-                motto
-                avatar
-                rank
-                liked
-                viewed
-              }
-            }
-          }
-          tagIds{
-            data{
-              attributes{
-                tag
-                alias
-              }
-            }
-          }
-          typeId{
-            data{
-              attributes{
-                type
-                alias
-              }
-            }
-          }
-          columId{
-            data{
-              attributes{
-                column
-                cover
-                describe
-                articles{
-                  data{
-                    id
-                    attributes{
-                      title
-                    }
-                  }
-                }
-              }
-            }
-          }
         }
       }
     }
